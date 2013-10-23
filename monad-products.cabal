@@ -10,8 +10,8 @@ stability:     provisional
 homepage:      http://github.com/ekmett/monad-products
 bug-reports:   http://github.com/ekmett/monad-products/issues
 copyright:     Copyright (C) 2011 Edward A. Kmett
-synopsis:      Haskell 98 monad products
-description:   Haskell 98 monad products
+synopsis:      Monad products
+description:   Monad products
 build-type:    Simple
 extra-source-files: .travis.yml CHANGELOG.md .gitignore
 
