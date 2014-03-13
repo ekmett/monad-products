@@ -8,7 +8,7 @@
 -- Stability   :  provisional
 -- Portability :  portable
 --
--- Monad Products 
+-- Monad Products
 ----------------------------------------------------------------------------
 
 module Control.Monad.Product
@@ -21,7 +21,7 @@ import Data.Functor.Alt
 import Control.Monad
 
 -- | disjoint 'Graph' union as a 'Monad' product
-newtype Product g h a = Product { runProduct :: (g a, h a) } 
+newtype Product g h a = Product { runProduct :: (g a, h a) }
 
 instance (Functor g, Functor h) => Functor (Product g h) where
   fmap f (Product (g, h)) = Product (fmap f g, fmap f h)
@@ -40,7 +40,7 @@ instance (Applicative g, Applicative h) => Applicative (Product g h) where
 
 instance (Bind g, Bind h) => Bind (Product g h) where
   Product (g, h) >>- k = Product (g >>- fst . runProduct . k, h >>- snd . runProduct . k)
-  
+
 instance (Monad g, Monad h) => Monad (Product g h) where
   return a = Product (return a, return a)
   Product (g, h) >>= k = Product (g >>= fst . runProduct . k, h >>= snd . runProduct . k)
